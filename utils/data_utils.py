@@ -155,6 +155,9 @@ def get_datasets_and_vocabs(dataset_path, language_direction, use_iwslt=True, us
             filter_pred=filter_pred
         )
 
+        # Raise before saving cache. I want to see what is in the folder `dataset_path`.
+        raise
+
         save_cache(train_cache_path, train_dataset)
         save_cache(val_cache_path, val_dataset)
         save_cache(test_cache_path, test_dataset)
@@ -274,6 +277,7 @@ def get_src_and_trg_batches(token_ids_batch):
     # Target input should be shifted by 1 compared to the target output tokens
     # Example: if we had a sentence like: [<s>,what,is,up,</s>] then to train the NMT model what we do is we pass
     # [<s>,what,is,up] to the input as set [what,is,up,</s>] as the expected output.
+    # NMT model: Neural machine translation model.
     trg_token_ids_batch_input = trg_token_ids_batch[:, :-1]
 
     # We reshape from (B, S) into (BxS, 1) as that's the the shape expected by LabelSmoothing which will produce

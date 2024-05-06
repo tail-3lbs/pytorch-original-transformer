@@ -213,6 +213,9 @@ class SublayerLogic(nn.Module):
         self.dropout = nn.Dropout(p=dropout_probability)
 
     def forward(self, representations_batch, sublayer_module):
+        # I want to know the second dim. Like 32 * 5000 * 512? Like, 32 is the batch size, 512 is the model dim.
+        # I want to know the middle one. What's that?
+        print(f'representations_batch.shape: {representations_batch.shape}')
         # Residual connection between input and sublayer output, details: Page 7, Chapter 5.4 "Regularization",
         return representations_batch + self.dropout(sublayer_module(self.norm(representations_batch)))
 

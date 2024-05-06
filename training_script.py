@@ -107,6 +107,8 @@ def train_transformer(training_config):
         training_config['batch_size'],
         device)
 
+    raise
+
     pad_token_id = src_field_processor.vocab.stoi[PAD_TOKEN]  # pad token id is the same for target as well
     src_vocab_size = len(src_field_processor.vocab)
     trg_vocab_size = len(trg_field_processor.vocab)
